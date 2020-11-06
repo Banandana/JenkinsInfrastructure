@@ -7,7 +7,7 @@ RUN apt-get install -y wget curl nodejs nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-#RUN service nginx restart
+RUN service nginx restart
 
 USER jenkins
 
@@ -24,7 +24,5 @@ COPY disable-setup.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY jenkins.yml /var/jenkins_home/jenkins.yaml
 
 RUN jenkins-plugin-cli --plugins github-branch-source dashboard-view workflow-aggregator pipeline-aggregator-view configuration-as-code blueocean
-
-
 
 USER root
